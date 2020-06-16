@@ -1,0 +1,35 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Constantinos' Blog 2020</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+
+    <body>
+
+        <div class = 'page-header'> 
+            <p>Hello, my name is Constantinos Iacovou and this is</p>
+            <h1><a href="/">My Personal Blog</a></h1>
+            <br>
+        </div>
+
+        <h3>Latest Posts</h3>
+        <br>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    </body>
+</html>
