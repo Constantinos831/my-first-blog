@@ -11,7 +11,10 @@
 
     <body>
 
-        <div class = 'page-header'> 
+        <div class = 'page-header'>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
             <p>Hello, my name is Constantinos Iacovou and this is</p>
             <h1><a href="/">My Personal Blog</a></h1>
             <br>
