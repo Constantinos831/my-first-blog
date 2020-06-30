@@ -1,25 +1,25 @@
 {% load static %}
 
 <html>
-    <head>
-        <title>Constantinos' Blog 2020</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+  <head>
+    <title>Constantinos' Blog 2020</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
       body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Electrolize', sans-serif;
       }
-      
+          
       .navbar {
         overflow: hidden;
         background-color: #333;
       }
-      
+          
       .navbar a {
         float: left;
         font-size: 16px;
@@ -28,12 +28,12 @@
         padding: 14px 16px;
         text-decoration: none;
       }
-      
+          
       .dropdown {
         float: left;
         overflow: hidden;
       }
-      
+          
       .dropdown .dropbtn {
         font-size: 16px;  
         border: none;
@@ -44,11 +44,11 @@
         font-family: inherit;
         margin: 0;
       }
-      
-      .navbar a:hover, .dropdown:hover .dropbtn {
+    
+      .dropdown:hover .dropbtn, .navbar a:hover{
         background-color: #f1a430;
       }
-      
+          
       .dropdown-content {
         display: none;
         position: absolute;
@@ -57,7 +57,7 @@
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
       }
-      
+          
       .dropdown-content a {
         float: none;
         color: black;
@@ -66,56 +66,55 @@
         display: block;
         text-align: left;
       }
-      
+          
       .dropdown-content a:hover {
         background-color: #ddd;
       }
-      
+          
       .dropdown:hover .dropdown-content {
         display: block;
       }
     </style>
+  </head>
 
-    <body>
+  <body>
 
-        <div class = 'page-header'>
-            {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
-            <p>Hello, my name is Constantinos Iacovou and this is</p>
-            <h1><a href="/">My Personal Blog</a></h1>
-            <p>created with Django a python web framework</p>
-            <br>
+    <div class = 'page-header'>
+      {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+      {% endif %}
+      <p>Hello, my name is Constantinos Iacovou and this is</p>
+      <h1><a href="/">My Personal Blog</a></h1>
+      <p>created with Django a python web framework</p>
+      <br>
+    </div>
+
+    <div class="navbar">
+      <a href="/">Latest Posts</a>
+      <div class="dropdown">
+        <button class="dropbtn">About me
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/">Cariculum Vitae</a>
+          <a href="/">Bio</a>
         </div>
+      </div>
+      <a href="">Contact</a>
+    </div>
 
-        <div class="navbar">
-          <div class="dropdown">
-            <button class="dropbtn">Latest Posts
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
-            <a href="#aboutme">About Me</a>
-          </div>
-            
+    <br>
+
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block content %}
+          {% endblock %}
         </div>
+      </div>
+    </div>
 
-        <h3>Latest Posts</h3>
-        <br>
+    <br>
+  </body>
 
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-    </body>
 </html>
